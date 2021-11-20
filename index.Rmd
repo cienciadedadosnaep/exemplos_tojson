@@ -1,0 +1,33 @@
+---
+title: "Transformações de dados para json"
+output: html_notebook
+---
+
+Neste documeto é apresentada várias formas de conversão de conjuntos de 
+dados para o formato json para a aplicação em echarts. 
+
+O primeiro exemplo será dedicado ao caso mais simples, no qual realizamos a conversão dos dados em formato de vetor em array para a composição de um [gráficos de barras](https://echarts.apache.org/examples/en/editor.html?c=bar-simple)    entretanto para o povoamento do site [reconhecendo Salvador](reconhecendosalvador.ufba.br) é necessário utilizar um conversor do código ([gerador](reconhecendosalvador.ufba.br/gerador)) que gera o formato que devemos nos referenciar:
+
+```{r, echo=TRUE,eval=FALSE}
+{"xAxis":{"type":"category","data":["Mon","Tue","Wed","Thu","Fri","Sat","Sun"]},"yAxis":{"type":"value"},"series":[{"data":[120,200,150,80,70,110,130],"type":"bar"}]}
+```
+
+Como podemos perceber numa estrutura simples como esta, precisamos somente
+das informações convertidas para o formato entre  colchetes.
+
+```{r, eval=TRUE,echo=TRUE}
+library(jsonlite)
+dias <- c('Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun')
+valores <- c(120, 200, 150, 80, 70, 110, 130)
+
+jsonlite::toJSON(dias)
+
+jsonlite::toJSON(valores)
+```
+
+É importante salientar que a estrutura do echarts, o ambiente de compilação de 
+gráficos com vários exemplos só reconhece os valores de caracteres em arrays 
+com aspas simples. Enquanto que para o caso do arquivo json utilizado para o 
+povoamento do site [reconhecendo Salvador](reconhecendosalvador.ufba.br)
+é necessário que apareça com aspas duplas, como percebemos no caso 
+do vetor dias.
