@@ -31,3 +31,5 @@ com aspas simples. Enquanto que para o caso do arquivo json utilizado para o
 povoamento do site [reconhecendo Salvador](reconhecendosalvador.ufba.br)
 é necessário que apareça com aspas duplas, como percebemos no caso 
 do vetor dias.
+
+Agora testaremos um exemplo no qual é necessário utilizar [barras lado a lado]()  
